@@ -12,3 +12,13 @@ This code is for Keras MobilenetV2 ImageNet and written in Python
 - tensorflow
 - numpy
 - matplotlib
+
+### Usage
+Save the input image under the name **input.jpg**  
+The output image will be named **output.jpg**  
+<code>main.py</code> and **input.jpg** must be in the same path  
+  
+Run <code>main.py</code>  
+If the run is finished, you can see **output.jpg**  
+  
+You can change a target of misclassification by changing target_index value
