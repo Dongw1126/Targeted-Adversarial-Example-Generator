@@ -104,7 +104,7 @@ def image_detection(filename):
   plt.figure()
   plt.imshow(image.numpy())
   _, image_class, class_confidence = get_imagenet_label(out)
-  plt.title('{} : {:.2f}% Confidence'.format(image_class, class_confidence * 100))
+  plt.title('{}\n{} : {:.2f}% Confidence'.format(filename, image_class, class_confidence * 100))
   plt.show()
 
 if __name__ == '__main__':
