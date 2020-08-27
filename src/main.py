@@ -58,23 +58,23 @@ def creat_adversarial_example(_target):
   image_init = preprocess_image(input_filename)
   plt.imsave(output_filename, image_init.numpy())
 
-  y_hat = tf.one_hot(target, label_shape)
-  y_hat = tf.reshape(y_hat, (1, label_shape))
+  y_LL = tf.one_hot(target, label_shape)
+  y_LL = tf.reshape(y_LL, (1, label_shape))
 
   for i in range(3):
     image_var = tf.Variable(preprocess_image(output_filename))
-    x_hat = image_var
+    x_adv = image_var
 
     for i in range(steps):
-      gradients = get_gradients(x_hat, y_hat)
+      gradients = get_gradients(x_adv, y_LL)
 
       perturbation += gradients
-      below = x_hat - epsilon
-      above = x_hat + epsilon
-      x_hat = x_hat - alpha * tf.sign(gradients)
-      x_hat = tf.clip_by_value(tf.clip_by_value(x_hat, below, above), 0, 1)
+      below = x_adv - epsilon
+      above = x_adv + epsilon
+      x_adv = x_adv - alpha * tf.sign(gradients)
+      x_adv = tf.clip_by_value(tf.clip_by_value(x_adv, below, above), 0, 1)
 
-    plt.imsave(output_filename, x_hat.numpy())
+    plt.imsave(output_filename, x_adv.numpy())
 
   fig = plt.figure()
   panel1 = fig.add_subplot(1, 3, 1)
@@ -90,9 +90,9 @@ def creat_adversarial_example(_target):
   panel2.axis("off")
 
   panel3 = fig.add_subplot(1, 3, 3)
-  _, label, confidence = get_imagenet_label(model.predict(x_hat[None, ...]))
+  _, label, confidence = get_imagenet_label(model.predict(x_adv[None, ...]))
   panel3.set_title('{} \n\n {:.2f}% Confidence'.format(label, confidence * 100))
-  panel3.imshow(x_hat.numpy())
+  panel3.imshow(x_adv.numpy())
   panel3.axis("off")
 
   plt.show()
