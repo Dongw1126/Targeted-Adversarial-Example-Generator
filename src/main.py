@@ -9,7 +9,7 @@ loss_function = tf.keras.losses.CategoricalCrossentropy()
 
 input_filename = "input.jpg"
 output_filename  = "output.jpg"
-target_index = 333 # ImageNet class index
+target_index = 333 # ImageNet class index, 333 : hamster
 
 
 def get_imagenet_label(probs):
