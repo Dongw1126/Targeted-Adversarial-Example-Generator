@@ -14,8 +14,8 @@ The target neural network is Keras MobilenetV2 ImageNet.
 - matplotlib
 
 ### Usage
-Save the input image under the name **input.jpg**  
-The output image will be named **output.jpg**  
+Input image name : **input.jpg**  
+Output image name : **output.jpg**  
 <code>main.py</code> and **input.jpg** must be in the same path.  
   
 Run <code>main.py</code>  
