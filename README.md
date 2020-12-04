@@ -21,4 +21,4 @@ Output image name : **output.jpg**
 Run <code>main.py</code>  
 While main is running, original image, noise, adversarial example are displayed in screen.  
   
-You can change a target of misclassification by changing **target_index value**
+You can change a target of misclassification by changing <code>target_index value</code>
